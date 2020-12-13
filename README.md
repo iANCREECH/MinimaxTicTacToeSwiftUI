@@ -1,2 +1,2 @@
 # MinimaxTicTacToeSwiftUI
-TicTacToe game in SwiftUI using minimax for the AI
+TicTacToe game in SwiftUI using minimax (with alpha-beta pruning) for the AI
