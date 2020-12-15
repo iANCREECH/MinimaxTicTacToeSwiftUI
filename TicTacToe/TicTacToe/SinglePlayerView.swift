@@ -39,9 +39,11 @@ struct SinglePlayerView: View {
                         }
                         .frame(width: getDemension(), height: getDemension()) // generates size of each square based on device screen demensions
                         .cornerRadius(15)
+                        .onChange(of: gameBoard.position, perform: { value in
+                            gameResult()
+                        })
                         .onTapGesture(perform: {
                             makeMove(index: index) // applying move to UI
-                            gameResult(board: gameBoard) // shows formatted alert if end state
                         })
                     }
                 }
@@ -83,10 +85,9 @@ struct SinglePlayerView: View {
     }
     
     // Formats alert based on end state
-    func gameResult(board: Board) {
-        let game = board
-        let win = game.isWin
-        let draw = game.isDraw
+    func gameResult() {
+        let win = gameBoard.isWin
+        let draw = gameBoard.isDraw
         
         if win {
             formatAlert(message: "Winner")
